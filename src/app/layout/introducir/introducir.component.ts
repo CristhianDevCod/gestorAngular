@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { ProductoModel } from '../../model/producto.model';
 import { 
   FormsModule, 
   ReactiveFormsModule,
@@ -38,7 +39,9 @@ export class IntroducirComponent {
     }
   }
 
-  validar(valor:string){
-    console.log(valor)
+  agregarNuevo(){
+    if(this.ingresoForm.valid){
+      
+    }
   }
 }
