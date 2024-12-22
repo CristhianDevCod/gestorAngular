@@ -1,0 +1,51 @@
+<form 
+    class="container
+        d-flex 
+        flex-column 
+        flex-md-row 
+        justify-content-around 
+        align-items-around
+        align-items-md-center 
+        gap-2"
+    [formGroup]="ingresoForm"
+    >
+    <div>
+        <select 
+            name="tipoOperacion"
+            aria-label="Selección de tipo ingreo/egreso"
+            class="form-select bg-primary"
+            [class]="{
+                'bg-success': (ingresoForm.value.tipo === 'ingreso'),
+                'bg-danger': (ingresoForm.value.tipo === 'egreso')
+            }"
+            formControlName="tipo"
+        >
+            <option value="" disabled>Tipo</option>
+            <option value="ingreso" class="bg-success">Ingreso</option>
+            <option value="egreso" class="bg-danger">Egreso</option>
+        </select>    
+    </div>
+    <div class="form-floating">
+        <input 
+            type="text" 
+            class="form-control" 
+            id="producto" 
+            placeholder="producto" 
+            formControlName="producto"
+            [class]="selectClass" 
+        >
+        <label for="producto">Producto</label>
+    </div>
+    <div class="form-floating">
+        <input 
+            type="number" 
+            class="form-control" 
+            id="valor" 
+            placeholder="Valor" 
+            formControlName="valor"
+            [class]="selectClass" 
+        >
+        <label for="valor">Valor</label>
+    </div>
+    <button class="btn btn-primary" [disabled]="!ingresoForm.valid">Agregar</button>
+</form>

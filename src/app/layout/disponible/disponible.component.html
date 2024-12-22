@@ -1,0 +1,22 @@
+<div class="text-center m-3 border border-primary rounded">
+    <p class="fw-bold fs-3 my-3 text-capitalize">
+      presupuesto disponible:
+      <span class="text-warning d-block">{{presupuesto | currency}}</span>
+    </p>
+  
+    <div class="d-flex justify-content-around">
+      <div class="text-uppercase">
+        <p>
+          ingresos
+          <span class="text-success d-block">{{presupuesto | currency}}</span>
+        </p>
+      </div>
+
+      <div class="text-uppercase">
+        <p>
+          egresos
+          <span class="text-danger d-block">{{presupuesto | currency}}</span>
+        </p>
+      </div>
+    </div>
+  </div>

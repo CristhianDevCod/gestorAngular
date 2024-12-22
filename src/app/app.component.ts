@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DisponibleComponent } from "./layout/disponible/disponible.component";
+import { IntroducirComponent } from "./layout/introducir/introducir.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [DisponibleComponent, IntroducirComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'puntoCero';
-}
+export class AppComponent {}
