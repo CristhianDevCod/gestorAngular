@@ -33,8 +33,15 @@
             placeholder="producto" 
             formControlName="producto"
             [class]="selectClass" 
+            [ngClass]="{
+                'is-valid': (ingresoForm.get('producto')?.valid && ingresoForm.get('producto')?.touched),
+                'is-invalid': (!ingresoForm.get('producto')?.valid && ingresoForm.get('producto')?.touched)
+            }"
         >
         <label for="producto">Producto</label>
+        <div class="invalid-feedback">
+            El campo de producto debe ser completo
+        </div>
     </div>
     <div class="form-floating">
         <input 
@@ -44,8 +51,15 @@
             placeholder="Valor" 
             formControlName="valor"
             [class]="selectClass" 
+            [ngClass]="{
+                'is-valid': (ingresoForm.get('valor')?.valid && ingresoForm.get('valor')?.touched),
+                'is-invalid': (!ingresoForm.get('valor')?.valid && ingresoForm.get('valor')?.touched)
+            }"
         >
         <label for="valor">Valor</label>
+        <div class="invalid-feedback">
+            El campo de valor debe ser completo
+        </div>
     </div>
     <button class="btn btn-primary" [disabled]="!ingresoForm.valid">Agregar</button>
 </form>
