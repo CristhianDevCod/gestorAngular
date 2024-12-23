@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { ProductoModel } from '../../model/producto.model';
 import { 
   FormsModule, 
   ReactiveFormsModule,
@@ -8,6 +7,8 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { ProductoService } from '../../services/producto.service';
+import { ProductoModel } from '../../model/producto.model';
 
 @Component({
   selector: 'app-introducir',
@@ -17,17 +18,27 @@ import {
     ReactiveFormsModule,
     NgClass
   ],
-  templateUrl: './introducir.component.html',
-  styles: ``
+  templateUrl: './introducir.component.html'
 })
 export class IntroducirComponent {
 
+  constructor(private productoService:ProductoService){}
+
+  //Arreglo local
+  items: ProductoModel[] = [];
+
+  ngOnInit():void{
+    this.items = this.productoService.elementos;
+  }
+
+  //Control de formulario
   ingresoForm = new FormGroup({
     tipo: new FormControl('', Validators.required),
     producto: new FormControl('', [Validators.required, Validators.maxLength(100)]),
     valor: new FormControl('', [Validators.required, Validators.min(1)])
-  })
+  });
 
+  //función dinamica para clases
   get selectClass():string{
     switch (this.ingresoForm.value.tipo) {
       case "ingreso":
@@ -39,9 +50,17 @@ export class IntroducirComponent {
     }
   }
 
+  //Agregar un nuevo producto
   agregarNuevo(){
     if(this.ingresoForm.valid){
-      
+      const nuevoProducto = new ProductoModel(
+        this.ingresoForm.value.tipo!,
+        this.ingresoForm.value.producto!,
+        Number.parseInt(this.ingresoForm.value.valor!)
+      )
+      this.productoService.agregarProducto(nuevoProducto)
+      this.ingresoForm.reset()
     }
+    return;
   }
 }

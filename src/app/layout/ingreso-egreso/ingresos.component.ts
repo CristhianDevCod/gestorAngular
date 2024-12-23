@@ -11,10 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class IngresosComponent {
 
-  items:ProductoModel[] = [
-    new ProductoModel('ingreso', 'gaseosa', 2500),
-    new ProductoModel('ingreso', 'microondas', 411000)
-  ];
+  items:ProductoModel[] = [];
 
   eliminarElemento(elementoEliminar: ProductoModel){
     const newItems = this.items.filter(nuevoRecorrido => nuevoRecorrido != elementoEliminar);
