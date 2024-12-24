@@ -1,5 +1,8 @@
 <div class="mt-3">
-    <h4 class="text-center text-capitalize" [ngClass]="tipoComponente === 'ingreso' ? 'text-primary': 'text-danger'">{{tipoComponente}}</h4>
+    <h4 
+        class="text-center text-capitalize" 
+        [ngStyle]="{ 'color': tipoComponente === 'ingreso' ? 'rgb(12, 220, 121)' : 'rgb(255, 159, 169)' }"
+    >{{tipoComponente}}</h4>
     <div>
         <ul class="list-group">
             @if(items.length === 0){

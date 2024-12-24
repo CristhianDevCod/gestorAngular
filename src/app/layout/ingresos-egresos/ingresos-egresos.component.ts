@@ -2,13 +2,13 @@ import { Component, Input } from '@angular/core';
 import { ProductoModel } from '../../model/producto.model';
 import { Subscription } from 'rxjs';
 import { ProductoService } from '../../services/producto.service';
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-ingresos-egresos',
   standalone: true,
   imports: [
-    NgClass,
+    NgStyle,
     CommonModule
   ],
   templateUrl: './ingresos-egresos.component.html',
