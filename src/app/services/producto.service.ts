@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ProductoModel } from '../model/producto.model';
 
 @Injectable({
@@ -8,6 +8,9 @@ import { ProductoModel } from '../model/producto.model';
 export class ProductoService {
   private _elementosGlobales = new BehaviorSubject<ProductoModel[]>([]);
   elementosGlobales$ = this._elementosGlobales.asObservable();
+
+  private eliminacionProductoSource = new Subject<ProductoModel>();
+  eliminacionProducto$ = this.eliminacionProductoSource.asObservable();
 
   agregarProducto(producto:ProductoModel):void{
     const elementos = this._elementosGlobales.getValue();
