@@ -25,11 +25,7 @@ export class IntroducirComponent {
   constructor(private productoService:ProductoService){}
 
   //Arreglo local
-  items: ProductoModel[] = [];
-
-  ngOnInit():void{
-    this.items = this.productoService.elementos;
-  }
+  // items: ProductoModel[] = [];
 
   //Control de formulario
   ingresoForm = new FormGroup({
@@ -57,9 +53,11 @@ export class IntroducirComponent {
         this.ingresoForm.value.tipo!,
         this.ingresoForm.value.producto!,
         Number.parseInt(this.ingresoForm.value.valor!)
-      )
-      this.productoService.agregarProducto(nuevoProducto)
-      this.ingresoForm.reset()
+      );
+      this.productoService.agregarProducto(nuevoProducto);
+      this.ingresoForm.reset({
+        tipo: ''
+      });
     }
     return;
   }

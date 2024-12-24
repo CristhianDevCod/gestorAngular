@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DisponibleComponent } from "./layout/disponible/disponible.component";
 import { IntroducirComponent } from "./layout/introducir/introducir.component";
-import { IngresosComponent } from "./layout/ingreso-egreso/ingresos.component";
+import { IngresosEgresosComponent } from "./layout/ingresos-egresos/ingresos-egresos.component";
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,12 @@ import { IngresosComponent } from "./layout/ingreso-egreso/ingresos.component";
   imports: [
     DisponibleComponent,
     IntroducirComponent,
-    IngresosComponent,
+    IngresosEgresosComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {}
+export class AppComponent {
+  componenteIngreso: string = 'ingreso';
+  componenteEgreso:string = 'egreso';
+}
